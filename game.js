@@ -11,7 +11,7 @@ let rounds = 1
 let myScores = 0
 let comScores = 0
 let draws = 0
-
+//this is the additional stuff for branch rps-ui
 btns.forEach((btn) => {
     btn.addEventListener('click', () => {
         let userInput = btn.id
