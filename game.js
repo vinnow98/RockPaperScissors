@@ -11,7 +11,7 @@ let rounds = 1
 let myScores = 0
 let comScores = 0
 let draws = 0
-
+//this is the additional stuff for branch rps-ui
 btns.forEach((btn) => {
     //not sure what async does, but its required for sleep function
     btn.addEventListener('click', async () => {
