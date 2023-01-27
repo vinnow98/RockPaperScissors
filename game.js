@@ -13,10 +13,15 @@ let comScores = 0
 let draws = 0
 
 btns.forEach((btn) => {
-    btn.addEventListener('click', () => {
+    //not sure what async does, but its required for sleep function
+    btn.addEventListener('click', async () => {
         let userInput = btn.id
         let comInput = comChoice()
+        round.textContent = `round ${rounds}, fight!`
+        rounds++
+        computerChoice.textContent = ""
         myChoice.textContent = `My Choice is ${userInput}`
+        await sleep(1000)
         computerChoice.textContent = `Com choice is ${comInput}`
         let com = convertChoice(comInput)
         let me = convertChoice(userInput)
@@ -29,7 +34,7 @@ btns.forEach((btn) => {
 })
 
 function fight(com, me) {
-    round.textContent = `round ${rounds}, fight!`
+
     //0 = rock, 1= paper , 2 = scissors
     if (com == 0 && me == 2 || com == 1 && me == 0 || com == 2 && me == 1) {
         roundResult.textContent = `Com wins this round!`
@@ -43,7 +48,7 @@ function fight(com, me) {
         myScores++
         myScore.textContent = `My score is ${myScores}`
     }
-    rounds++
+
 }
 
 function convertChoice(choice) {
@@ -80,4 +85,8 @@ function finalScoreboard() {
         finalResult.textContent = `You win! Final stats :\nTotal rounds = ${rounds - 1} \nCom Score = ${comScores}\nMy Score = ${myScores}\nDraws = ${draws}`
     }
 
+}
+// for "loading time" for computer to think
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
